@@ -6,6 +6,7 @@ let router = express.Router();
 
 // router.get('/:id?', async (req, res) => {
 
+
 //     let id = req.params.id
 //     if (id) {
 //         let chirp = await db.GetChirp(id);
@@ -61,9 +62,11 @@ router.delete('/:id', (req, res) => {
     res.send(`It has been deleted!`);
 });
 
-router.get('/:id'), (req, res) => {
-    db.GetMentions(req.params.id);
-    res.send('it is working');
-};
+router.get('/:id', (req, res) => {
+    db.GetMentions(req.params.id).then(results => {
+        res.send(results);
+    })
+    
+});
 
 module.exports = router;
